@@ -1,0 +1,13 @@
+#  生成api代码
+goctl api go --api *.api --dir ./  --style goZero
+# 生成rpc代码
+goctl rpc protoc ./pb/usercenter.proto --go-grpc_out=./ --go_out=./ --zrpc_out=. --client=true --style=goZero
+# 生成model
+goctl model mysql datasource --url='root:123456@tcp(127.0.0.1:3307)/gorm_test' -t=users --cache=true
+
+
+
+#etcd
+docker run -d --name etcd --network etcd-net -p 2379:2379 -p 2380:2380 -e ALLOW_NONE_AUTHENTICATION=yes -e ETCD_LISTEN_CLIENT_URLS=http://0.0.0.0:2379 -e ETCD_ADVERTISE_CLIENT_URLS=http://etcd:2379 bitnami/etcd:latest 
+#etcdkeeper
+docker run -d --name etcdkeeper --network etcd-net -p 9003:8080 -e ETCD_HOST=etcd -e ETCD_PORT=2379 -e ETCD_API=3 -e ETCD_PROTOCOL=http -e ETCD_KEEPER_PORT=9003 evildecay/etcdkeeper:latest

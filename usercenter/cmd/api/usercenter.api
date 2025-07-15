@@ -1,0 +1,37 @@
+syntax = "v1"
+
+type (
+	// 定义登录接口的 json 请求体
+	LoginReq {
+		Username string `json:"uname"`
+		Password string `json:"pwd"`
+	}
+	// 定义登录接口的 json 响应体
+	LoginResp {
+		Id       uint64 `json:"id"`
+		Name     string `json:"name"`
+		Token    string `json:"token"`
+		ExpireAt string `json:"expireAt"`
+	}
+	RegiesterReq {
+		Username string `json:"uname"`
+		Password string `json:"pwd"`
+		Email    string `json:"email"`
+	}
+	RegisterResp {
+		Id uint64 `json:"id"`
+	}
+)
+
+@server (
+	group:  login
+	prefix: "v1"
+)
+service usercenter {
+	@handler login
+	post /user/login (LoginReq) returns (LoginResp)
+
+	@handler register
+	post /user/reg (RegiesterReq) returns (RegisterResp)
+}
+
