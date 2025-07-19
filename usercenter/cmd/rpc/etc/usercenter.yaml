@@ -5,5 +5,10 @@ Etcd:
   - 127.0.0.1:2379
   Key: usercenter.rpc
 
+Jwt:
+  AccessSecret: ParkYD123
+  AccessExpire: 9600
+
+
 DB:
   DataSource: root:123456@tcp(127.0.0.1:3307)/gorm_test?charset=utf8mb4&parseTime=True&loc=Local

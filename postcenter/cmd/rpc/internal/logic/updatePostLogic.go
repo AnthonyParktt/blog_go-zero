@@ -1,4 +1,4 @@
-package postinfologic
+package logic
 
 import (
 	"context"

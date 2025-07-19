@@ -1,7 +1,9 @@
-package commentsinfologic
+package logic
 
 import (
 	"context"
+	"github.com/spf13/cast"
+	"go-zero_less/postcenter/model"
 
 	"go-zero_less/postcenter/cmd/rpc/internal/svc"
 	"go-zero_less/postcenter/cmd/rpc/pb"
@@ -24,7 +26,19 @@ func NewCreateCommentsInfoLogic(ctx context.Context, svcCtx *svc.ServiceContext)
 }
 
 func (l *CreateCommentsInfoLogic) CreateCommentsInfo(in *pb.CommentsInfoCreateRequest) (*pb.CommentsInfoId, error) {
-	// todo: add your logic here and delete this line
-
-	return &pb.CommentsInfoId{}, nil
+	res, err := l.svcCtx.CommentsModel.Insert(l.ctx, &model.Comments{
+		PostId:  in.CommentsInfo.PostId,
+		UserId:  in.CommentsInfo.UserId,
+		Content: in.CommentsInfo.Content,
+	})
+	if err != nil {
+		return nil, err
+	}
+	lastId, err := res.LastInsertId()
+	if err != nil {
+		return nil, err
+	}
+	return &pb.CommentsInfoId{
+		Id: cast.ToUint64(lastId),
+	}, nil
 }

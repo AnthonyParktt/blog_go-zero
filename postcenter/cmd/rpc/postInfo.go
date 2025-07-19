@@ -5,8 +5,7 @@ import (
 	"fmt"
 
 	"go-zero_less/postcenter/cmd/rpc/internal/config"
-	commentsinfoServer "go-zero_less/postcenter/cmd/rpc/internal/server/commentsinfo"
-	postinfoServer "go-zero_less/postcenter/cmd/rpc/internal/server/postinfo"
+	"go-zero_less/postcenter/cmd/rpc/internal/server"
 	"go-zero_less/postcenter/cmd/rpc/internal/svc"
 	"go-zero_less/postcenter/cmd/rpc/pb"
 
@@ -27,8 +26,7 @@ func main() {
 	ctx := svc.NewServiceContext(c)
 
 	s := zrpc.MustNewServer(c.RpcServerConf, func(grpcServer *grpc.Server) {
-		pb.RegisterPostInfoServer(grpcServer, postinfoServer.NewPostInfoServer(ctx))
-		pb.RegisterCommentsInfoServer(grpcServer, commentsinfoServer.NewCommentsInfoServer(ctx))
+		pb.RegisterPostInfoServer(grpcServer, server.NewPostInfoServer(ctx))
 
 		if c.Mode == service.DevMode || c.Mode == service.TestMode {
 			reflection.Register(grpcServer)

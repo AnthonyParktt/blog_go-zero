@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"net/http"
 
 	"go-zero_less/postcenter/cmd/api/internal/config"
 	"go-zero_less/postcenter/cmd/api/internal/handler"
@@ -20,7 +21,9 @@ func main() {
 	var c config.Config
 	conf.MustLoad(*configFile, &c)
 
-	server := rest.MustNewServer(c.RestConf)
+	server := rest.MustNewServer(c.RestConf, rest.WithUnauthorizedCallback(func(w http.ResponseWriter, r *http.Request, err error) {
+		w.Write([]byte("unauthorized"))
+	}))
 	defer server.Stop()
 
 	ctx := svc.NewServiceContext(c)

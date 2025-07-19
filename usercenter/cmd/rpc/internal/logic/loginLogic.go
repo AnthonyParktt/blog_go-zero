@@ -3,6 +3,7 @@ package logic
 import (
 	"context"
 	"errors"
+	"time"
 
 	"go-zero_less/pkg/utils"
 	"go-zero_less/usercenter/cmd/rpc/internal/svc"
@@ -42,7 +43,10 @@ func (l *LoginLogic) Login(in *pb.LoginReq) (*pb.LoginResp, error) {
 	if err != nil {
 		return nil, status.Error(codes.Unauthenticated, "用户名密码错误")
 	}
-	token, err := utils.GenerateToken(uint(user.Id), "123456")
+	//token, err := utils.GenerateToken(uint(user.Id), l.svcCtx.Config.Auth.AccessSecret)
+	payload := make(map[string]any)
+	payload["userId"] = user.Id
+	token, err := utils.GetJwtToken(l.svcCtx.Config.JWT.AccessSecret, time.Now().Unix(), l.svcCtx.Config.JWT.AccessExpire, payload)
 	if err != nil {
 		return nil, errors.New("token生成错误")
 	}

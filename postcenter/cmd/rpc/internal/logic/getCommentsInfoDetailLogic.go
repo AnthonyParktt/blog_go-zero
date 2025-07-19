@@ -1,4 +1,4 @@
-package commentsinfologic
+package logic
 
 import (
 	"context"

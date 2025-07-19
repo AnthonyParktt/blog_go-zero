@@ -14,6 +14,15 @@ import (
 )
 
 type (
+	CommentPostId              = pb.CommentPostId
+	CommentsInfoBase           = pb.CommentsInfoBase
+	CommentsInfoCreateRequest  = pb.CommentsInfoCreateRequest
+	CommentsInfoDeleteRequest  = pb.CommentsInfoDeleteRequest
+	CommentsInfoDeleteResponse = pb.CommentsInfoDeleteResponse
+	CommentsInfoDetail         = pb.CommentsInfoDetail
+	CommentsInfoId             = pb.CommentsInfoId
+	CommentsInfoList           = pb.CommentsInfoList
+	CommentsInfoListPage       = pb.CommentsInfoListPage
 	ExecRows                   = pb.ExecRows
 	PostInfoBase               = pb.PostInfoBase
 	PostInfoCountRequest       = pb.PostInfoCountRequest
@@ -27,6 +36,7 @@ type (
 	PostInfoListPage           = pb.PostInfoListPage
 	PostInfoUpdateRequest      = pb.PostInfoUpdateRequest
 	PostSearchRequest          = pb.PostSearchRequest
+	UserInfoId                 = pb.UserInfoId
 
 	PostInfo interface {
 		GetPostListPage(ctx context.Context, in *PostSearchRequest, opts ...grpc.CallOption) (*PostInfoListPage, error)
@@ -34,6 +44,10 @@ type (
 		CreatePost(ctx context.Context, in *PostInfoCreateRequest, opts ...grpc.CallOption) (*PostInfoId, error)
 		DeletePost(ctx context.Context, in *PostInfoId, opts ...grpc.CallOption) (*PostInfoDeleteResponse, error)
 		UpdatePost(ctx context.Context, in *PostInfoBase, opts ...grpc.CallOption) (*ExecRows, error)
+		GetCommentsInfoListPage(ctx context.Context, in *CommentPostId, opts ...grpc.CallOption) (*CommentsInfoListPage, error)
+		GetCommentsInfoDetail(ctx context.Context, in *CommentsInfoId, opts ...grpc.CallOption) (*CommentsInfoDetail, error)
+		CreateCommentsInfo(ctx context.Context, in *CommentsInfoCreateRequest, opts ...grpc.CallOption) (*CommentsInfoId, error)
+		DeleteCommentsInfo(ctx context.Context, in *CommentsInfoId, opts ...grpc.CallOption) (*CommentsInfoDeleteResponse, error)
 	}
 
 	defaultPostInfo struct {
@@ -70,4 +84,24 @@ func (m *defaultPostInfo) DeletePost(ctx context.Context, in *PostInfoId, opts .
 func (m *defaultPostInfo) UpdatePost(ctx context.Context, in *PostInfoBase, opts ...grpc.CallOption) (*ExecRows, error) {
 	client := pb.NewPostInfoClient(m.cli.Conn())
 	return client.UpdatePost(ctx, in, opts...)
+}
+
+func (m *defaultPostInfo) GetCommentsInfoListPage(ctx context.Context, in *CommentPostId, opts ...grpc.CallOption) (*CommentsInfoListPage, error) {
+	client := pb.NewPostInfoClient(m.cli.Conn())
+	return client.GetCommentsInfoListPage(ctx, in, opts...)
+}
+
+func (m *defaultPostInfo) GetCommentsInfoDetail(ctx context.Context, in *CommentsInfoId, opts ...grpc.CallOption) (*CommentsInfoDetail, error) {
+	client := pb.NewPostInfoClient(m.cli.Conn())
+	return client.GetCommentsInfoDetail(ctx, in, opts...)
+}
+
+func (m *defaultPostInfo) CreateCommentsInfo(ctx context.Context, in *CommentsInfoCreateRequest, opts ...grpc.CallOption) (*CommentsInfoId, error) {
+	client := pb.NewPostInfoClient(m.cli.Conn())
+	return client.CreateCommentsInfo(ctx, in, opts...)
+}
+
+func (m *defaultPostInfo) DeleteCommentsInfo(ctx context.Context, in *CommentsInfoId, opts ...grpc.CallOption) (*CommentsInfoDeleteResponse, error) {
+	client := pb.NewPostInfoClient(m.cli.Conn())
+	return client.DeleteCommentsInfo(ctx, in, opts...)
 }

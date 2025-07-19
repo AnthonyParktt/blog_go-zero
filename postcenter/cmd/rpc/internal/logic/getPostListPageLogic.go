@@ -1,9 +1,10 @@
-package postinfologic
+package logic
 
 import (
 	"context"
 	"errors"
 	"go-zero_less/postcenter/model"
+
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 

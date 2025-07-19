@@ -7,4 +7,8 @@ type Config struct {
 	DB struct {
 		DataSource string
 	}
+	JWT struct {
+		AccessSecret string
+		AccessExpire int64
+	}
 }

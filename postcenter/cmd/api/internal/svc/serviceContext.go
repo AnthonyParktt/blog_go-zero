@@ -2,7 +2,7 @@ package svc
 
 import (
 	"go-zero_less/postcenter/cmd/api/internal/config"
-	"go-zero_less/postcenter/cmd/rpc/client/postinfo"
+	"go-zero_less/postcenter/cmd/rpc/postinfo"
 
 	"github.com/zeromicro/go-zero/zrpc"
 )

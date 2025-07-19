@@ -3,9 +3,8 @@ module go-zero_less
 go 1.24.4
 
 require (
-	github.com/Masterminds/squirrel v1.5.4
 	github.com/golang-jwt/jwt/v5 v5.2.2
-	github.com/pkg/errors v0.9.1
+	github.com/spf13/cast v1.9.2
 	github.com/zeromicro/go-zero v1.8.4
 	github.com/zeromicro/x v0.0.0-20240408115609-8224c482b07e
 	golang.org/x/crypto v0.33.0
@@ -44,8 +43,6 @@ require (
 	github.com/josharian/intern v1.0.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/klauspost/compress v1.17.11 // indirect
-	github.com/lann/builder v0.0.0-20180802200727-47ae307949d0 // indirect
-	github.com/lann/ps v0.0.0-20150810152359-62de8c46ede0 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect

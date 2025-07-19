@@ -21,6 +21,520 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// 评论信息
+type CommentsInfoBase struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Content       string                 `protobuf:"bytes,2,opt,name=content,proto3" json:"content,omitempty"`
+	UserId        uint64                 `protobuf:"varint,3,opt,name=userId,proto3" json:"userId,omitempty"`
+	PostId        uint64                 `protobuf:"varint,4,opt,name=postId,proto3" json:"postId,omitempty"`
+	CreatedAt     uint64                 `protobuf:"varint,5,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
+	UpdatedAt     uint64                 `protobuf:"varint,6,opt,name=updatedAt,proto3" json:"updatedAt,omitempty"`
+	DeletedAt     uint64                 `protobuf:"varint,7,opt,name=deletedAt,proto3" json:"deletedAt,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CommentsInfoBase) Reset() {
+	*x = CommentsInfoBase{}
+	mi := &file_postInfo_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CommentsInfoBase) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CommentsInfoBase) ProtoMessage() {}
+
+func (x *CommentsInfoBase) ProtoReflect() protoreflect.Message {
+	mi := &file_postInfo_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CommentsInfoBase.ProtoReflect.Descriptor instead.
+func (*CommentsInfoBase) Descriptor() ([]byte, []int) {
+	return file_postInfo_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *CommentsInfoBase) GetId() uint64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *CommentsInfoBase) GetContent() string {
+	if x != nil {
+		return x.Content
+	}
+	return ""
+}
+
+func (x *CommentsInfoBase) GetUserId() uint64 {
+	if x != nil {
+		return x.UserId
+	}
+	return 0
+}
+
+func (x *CommentsInfoBase) GetPostId() uint64 {
+	if x != nil {
+		return x.PostId
+	}
+	return 0
+}
+
+func (x *CommentsInfoBase) GetCreatedAt() uint64 {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return 0
+}
+
+func (x *CommentsInfoBase) GetUpdatedAt() uint64 {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return 0
+}
+
+func (x *CommentsInfoBase) GetDeletedAt() uint64 {
+	if x != nil {
+		return x.DeletedAt
+	}
+	return 0
+}
+
+type CommentsInfoList struct {
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	CommentsInfoList []*CommentsInfoBase    `protobuf:"bytes,1,rep,name=commentsInfoList,proto3" json:"commentsInfoList,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *CommentsInfoList) Reset() {
+	*x = CommentsInfoList{}
+	mi := &file_postInfo_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CommentsInfoList) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CommentsInfoList) ProtoMessage() {}
+
+func (x *CommentsInfoList) ProtoReflect() protoreflect.Message {
+	mi := &file_postInfo_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CommentsInfoList.ProtoReflect.Descriptor instead.
+func (*CommentsInfoList) Descriptor() ([]byte, []int) {
+	return file_postInfo_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *CommentsInfoList) GetCommentsInfoList() []*CommentsInfoBase {
+	if x != nil {
+		return x.CommentsInfoList
+	}
+	return nil
+}
+
+type CommentsInfoId struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CommentsInfoId) Reset() {
+	*x = CommentsInfoId{}
+	mi := &file_postInfo_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CommentsInfoId) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CommentsInfoId) ProtoMessage() {}
+
+func (x *CommentsInfoId) ProtoReflect() protoreflect.Message {
+	mi := &file_postInfo_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CommentsInfoId.ProtoReflect.Descriptor instead.
+func (*CommentsInfoId) Descriptor() ([]byte, []int) {
+	return file_postInfo_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *CommentsInfoId) GetId() uint64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+type CommentPostId struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PostId        uint64                 `protobuf:"varint,1,opt,name=postId,proto3" json:"postId,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CommentPostId) Reset() {
+	*x = CommentPostId{}
+	mi := &file_postInfo_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CommentPostId) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CommentPostId) ProtoMessage() {}
+
+func (x *CommentPostId) ProtoReflect() protoreflect.Message {
+	mi := &file_postInfo_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CommentPostId.ProtoReflect.Descriptor instead.
+func (*CommentPostId) Descriptor() ([]byte, []int) {
+	return file_postInfo_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *CommentPostId) GetPostId() uint64 {
+	if x != nil {
+		return x.PostId
+	}
+	return 0
+}
+
+type UserInfoId struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        uint64                 `protobuf:"varint,1,opt,name=userId,proto3" json:"userId,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UserInfoId) Reset() {
+	*x = UserInfoId{}
+	mi := &file_postInfo_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UserInfoId) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UserInfoId) ProtoMessage() {}
+
+func (x *UserInfoId) ProtoReflect() protoreflect.Message {
+	mi := &file_postInfo_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UserInfoId.ProtoReflect.Descriptor instead.
+func (*UserInfoId) Descriptor() ([]byte, []int) {
+	return file_postInfo_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *UserInfoId) GetUserId() uint64 {
+	if x != nil {
+		return x.UserId
+	}
+	return 0
+}
+
+type CommentsInfoListPage struct {
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	CommentsInfoList []*CommentsInfoBase    `protobuf:"bytes,1,rep,name=commentsInfoList,proto3" json:"commentsInfoList,omitempty"`
+	Total            uint64                 `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	Page             uint64                 `protobuf:"varint,3,opt,name=page,proto3" json:"page,omitempty"`
+	PageSize         uint64                 `protobuf:"varint,4,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *CommentsInfoListPage) Reset() {
+	*x = CommentsInfoListPage{}
+	mi := &file_postInfo_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CommentsInfoListPage) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CommentsInfoListPage) ProtoMessage() {}
+
+func (x *CommentsInfoListPage) ProtoReflect() protoreflect.Message {
+	mi := &file_postInfo_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CommentsInfoListPage.ProtoReflect.Descriptor instead.
+func (*CommentsInfoListPage) Descriptor() ([]byte, []int) {
+	return file_postInfo_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *CommentsInfoListPage) GetCommentsInfoList() []*CommentsInfoBase {
+	if x != nil {
+		return x.CommentsInfoList
+	}
+	return nil
+}
+
+func (x *CommentsInfoListPage) GetTotal() uint64 {
+	if x != nil {
+		return x.Total
+	}
+	return 0
+}
+
+func (x *CommentsInfoListPage) GetPage() uint64 {
+	if x != nil {
+		return x.Page
+	}
+	return 0
+}
+
+func (x *CommentsInfoListPage) GetPageSize() uint64 {
+	if x != nil {
+		return x.PageSize
+	}
+	return 0
+}
+
+type CommentsInfoDetail struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	CommentsInfo  *CommentsInfoBase      `protobuf:"bytes,1,opt,name=commentsInfo,proto3" json:"commentsInfo,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CommentsInfoDetail) Reset() {
+	*x = CommentsInfoDetail{}
+	mi := &file_postInfo_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CommentsInfoDetail) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CommentsInfoDetail) ProtoMessage() {}
+
+func (x *CommentsInfoDetail) ProtoReflect() protoreflect.Message {
+	mi := &file_postInfo_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CommentsInfoDetail.ProtoReflect.Descriptor instead.
+func (*CommentsInfoDetail) Descriptor() ([]byte, []int) {
+	return file_postInfo_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *CommentsInfoDetail) GetCommentsInfo() *CommentsInfoBase {
+	if x != nil {
+		return x.CommentsInfo
+	}
+	return nil
+}
+
+type CommentsInfoCreateRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	CommentsInfo  *CommentsInfoBase      `protobuf:"bytes,1,opt,name=commentsInfo,proto3" json:"commentsInfo,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CommentsInfoCreateRequest) Reset() {
+	*x = CommentsInfoCreateRequest{}
+	mi := &file_postInfo_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CommentsInfoCreateRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CommentsInfoCreateRequest) ProtoMessage() {}
+
+func (x *CommentsInfoCreateRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_postInfo_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CommentsInfoCreateRequest.ProtoReflect.Descriptor instead.
+func (*CommentsInfoCreateRequest) Descriptor() ([]byte, []int) {
+	return file_postInfo_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *CommentsInfoCreateRequest) GetCommentsInfo() *CommentsInfoBase {
+	if x != nil {
+		return x.CommentsInfo
+	}
+	return nil
+}
+
+type CommentsInfoDeleteRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CommentsInfoDeleteRequest) Reset() {
+	*x = CommentsInfoDeleteRequest{}
+	mi := &file_postInfo_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CommentsInfoDeleteRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CommentsInfoDeleteRequest) ProtoMessage() {}
+
+func (x *CommentsInfoDeleteRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_postInfo_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CommentsInfoDeleteRequest.ProtoReflect.Descriptor instead.
+func (*CommentsInfoDeleteRequest) Descriptor() ([]byte, []int) {
+	return file_postInfo_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *CommentsInfoDeleteRequest) GetId() uint64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+type CommentsInfoDeleteResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CommentsInfoDeleteResponse) Reset() {
+	*x = CommentsInfoDeleteResponse{}
+	mi := &file_postInfo_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CommentsInfoDeleteResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CommentsInfoDeleteResponse) ProtoMessage() {}
+
+func (x *CommentsInfoDeleteResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_postInfo_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CommentsInfoDeleteResponse.ProtoReflect.Descriptor instead.
+func (*CommentsInfoDeleteResponse) Descriptor() ([]byte, []int) {
+	return file_postInfo_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *CommentsInfoDeleteResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
+// 帖子信息
 type PostInfoBase struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -36,7 +550,7 @@ type PostInfoBase struct {
 
 func (x *PostInfoBase) Reset() {
 	*x = PostInfoBase{}
-	mi := &file_postInfo_proto_msgTypes[0]
+	mi := &file_postInfo_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -48,7 +562,7 @@ func (x *PostInfoBase) String() string {
 func (*PostInfoBase) ProtoMessage() {}
 
 func (x *PostInfoBase) ProtoReflect() protoreflect.Message {
-	mi := &file_postInfo_proto_msgTypes[0]
+	mi := &file_postInfo_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -61,7 +575,7 @@ func (x *PostInfoBase) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PostInfoBase.ProtoReflect.Descriptor instead.
 func (*PostInfoBase) Descriptor() ([]byte, []int) {
-	return file_postInfo_proto_rawDescGZIP(), []int{0}
+	return file_postInfo_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *PostInfoBase) GetId() uint64 {
@@ -122,7 +636,7 @@ type PostInfoList struct {
 
 func (x *PostInfoList) Reset() {
 	*x = PostInfoList{}
-	mi := &file_postInfo_proto_msgTypes[1]
+	mi := &file_postInfo_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -134,7 +648,7 @@ func (x *PostInfoList) String() string {
 func (*PostInfoList) ProtoMessage() {}
 
 func (x *PostInfoList) ProtoReflect() protoreflect.Message {
-	mi := &file_postInfo_proto_msgTypes[1]
+	mi := &file_postInfo_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -147,7 +661,7 @@ func (x *PostInfoList) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PostInfoList.ProtoReflect.Descriptor instead.
 func (*PostInfoList) Descriptor() ([]byte, []int) {
-	return file_postInfo_proto_rawDescGZIP(), []int{1}
+	return file_postInfo_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *PostInfoList) GetPostInfoList() []*PostInfoBase {
@@ -169,7 +683,7 @@ type PostInfoListPage struct {
 
 func (x *PostInfoListPage) Reset() {
 	*x = PostInfoListPage{}
-	mi := &file_postInfo_proto_msgTypes[2]
+	mi := &file_postInfo_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -181,7 +695,7 @@ func (x *PostInfoListPage) String() string {
 func (*PostInfoListPage) ProtoMessage() {}
 
 func (x *PostInfoListPage) ProtoReflect() protoreflect.Message {
-	mi := &file_postInfo_proto_msgTypes[2]
+	mi := &file_postInfo_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -194,7 +708,7 @@ func (x *PostInfoListPage) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PostInfoListPage.ProtoReflect.Descriptor instead.
 func (*PostInfoListPage) Descriptor() ([]byte, []int) {
-	return file_postInfo_proto_rawDescGZIP(), []int{2}
+	return file_postInfo_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *PostInfoListPage) GetPostInfoList() []*PostInfoBase {
@@ -234,7 +748,7 @@ type PostInfoId struct {
 
 func (x *PostInfoId) Reset() {
 	*x = PostInfoId{}
-	mi := &file_postInfo_proto_msgTypes[3]
+	mi := &file_postInfo_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -246,7 +760,7 @@ func (x *PostInfoId) String() string {
 func (*PostInfoId) ProtoMessage() {}
 
 func (x *PostInfoId) ProtoReflect() protoreflect.Message {
-	mi := &file_postInfo_proto_msgTypes[3]
+	mi := &file_postInfo_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -259,7 +773,7 @@ func (x *PostInfoId) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PostInfoId.ProtoReflect.Descriptor instead.
 func (*PostInfoId) Descriptor() ([]byte, []int) {
-	return file_postInfo_proto_rawDescGZIP(), []int{3}
+	return file_postInfo_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *PostInfoId) GetId() uint64 {
@@ -278,7 +792,7 @@ type PostInfoDetail struct {
 
 func (x *PostInfoDetail) Reset() {
 	*x = PostInfoDetail{}
-	mi := &file_postInfo_proto_msgTypes[4]
+	mi := &file_postInfo_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -290,7 +804,7 @@ func (x *PostInfoDetail) String() string {
 func (*PostInfoDetail) ProtoMessage() {}
 
 func (x *PostInfoDetail) ProtoReflect() protoreflect.Message {
-	mi := &file_postInfo_proto_msgTypes[4]
+	mi := &file_postInfo_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -303,7 +817,7 @@ func (x *PostInfoDetail) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PostInfoDetail.ProtoReflect.Descriptor instead.
 func (*PostInfoDetail) Descriptor() ([]byte, []int) {
-	return file_postInfo_proto_rawDescGZIP(), []int{4}
+	return file_postInfo_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *PostInfoDetail) GetPostInfo() *PostInfoBase {
@@ -323,7 +837,7 @@ type PostInfoDetailWithComments struct {
 
 func (x *PostInfoDetailWithComments) Reset() {
 	*x = PostInfoDetailWithComments{}
-	mi := &file_postInfo_proto_msgTypes[5]
+	mi := &file_postInfo_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -335,7 +849,7 @@ func (x *PostInfoDetailWithComments) String() string {
 func (*PostInfoDetailWithComments) ProtoMessage() {}
 
 func (x *PostInfoDetailWithComments) ProtoReflect() protoreflect.Message {
-	mi := &file_postInfo_proto_msgTypes[5]
+	mi := &file_postInfo_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -348,7 +862,7 @@ func (x *PostInfoDetailWithComments) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PostInfoDetailWithComments.ProtoReflect.Descriptor instead.
 func (*PostInfoDetailWithComments) Descriptor() ([]byte, []int) {
-	return file_postInfo_proto_rawDescGZIP(), []int{5}
+	return file_postInfo_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *PostInfoDetailWithComments) GetPostInfo() *PostInfoBase {
@@ -374,7 +888,7 @@ type PostInfoCreateRequest struct {
 
 func (x *PostInfoCreateRequest) Reset() {
 	*x = PostInfoCreateRequest{}
-	mi := &file_postInfo_proto_msgTypes[6]
+	mi := &file_postInfo_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -386,7 +900,7 @@ func (x *PostInfoCreateRequest) String() string {
 func (*PostInfoCreateRequest) ProtoMessage() {}
 
 func (x *PostInfoCreateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_postInfo_proto_msgTypes[6]
+	mi := &file_postInfo_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -399,7 +913,7 @@ func (x *PostInfoCreateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PostInfoCreateRequest.ProtoReflect.Descriptor instead.
 func (*PostInfoCreateRequest) Descriptor() ([]byte, []int) {
-	return file_postInfo_proto_rawDescGZIP(), []int{6}
+	return file_postInfo_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *PostInfoCreateRequest) GetPostInfo() *PostInfoBase {
@@ -418,7 +932,7 @@ type PostInfoUpdateRequest struct {
 
 func (x *PostInfoUpdateRequest) Reset() {
 	*x = PostInfoUpdateRequest{}
-	mi := &file_postInfo_proto_msgTypes[7]
+	mi := &file_postInfo_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -430,7 +944,7 @@ func (x *PostInfoUpdateRequest) String() string {
 func (*PostInfoUpdateRequest) ProtoMessage() {}
 
 func (x *PostInfoUpdateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_postInfo_proto_msgTypes[7]
+	mi := &file_postInfo_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -443,7 +957,7 @@ func (x *PostInfoUpdateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PostInfoUpdateRequest.ProtoReflect.Descriptor instead.
 func (*PostInfoUpdateRequest) Descriptor() ([]byte, []int) {
-	return file_postInfo_proto_rawDescGZIP(), []int{7}
+	return file_postInfo_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *PostInfoUpdateRequest) GetPostInfo() *PostInfoBase {
@@ -462,7 +976,7 @@ type PostInfoDeleteResponse struct {
 
 func (x *PostInfoDeleteResponse) Reset() {
 	*x = PostInfoDeleteResponse{}
-	mi := &file_postInfo_proto_msgTypes[8]
+	mi := &file_postInfo_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -474,7 +988,7 @@ func (x *PostInfoDeleteResponse) String() string {
 func (*PostInfoDeleteResponse) ProtoMessage() {}
 
 func (x *PostInfoDeleteResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_postInfo_proto_msgTypes[8]
+	mi := &file_postInfo_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -487,7 +1001,7 @@ func (x *PostInfoDeleteResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PostInfoDeleteResponse.ProtoReflect.Descriptor instead.
 func (*PostInfoDeleteResponse) Descriptor() ([]byte, []int) {
-	return file_postInfo_proto_rawDescGZIP(), []int{8}
+	return file_postInfo_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *PostInfoDeleteResponse) GetSuccess() bool {
@@ -506,7 +1020,7 @@ type ExecRows struct {
 
 func (x *ExecRows) Reset() {
 	*x = ExecRows{}
-	mi := &file_postInfo_proto_msgTypes[9]
+	mi := &file_postInfo_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -518,7 +1032,7 @@ func (x *ExecRows) String() string {
 func (*ExecRows) ProtoMessage() {}
 
 func (x *ExecRows) ProtoReflect() protoreflect.Message {
-	mi := &file_postInfo_proto_msgTypes[9]
+	mi := &file_postInfo_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -531,7 +1045,7 @@ func (x *ExecRows) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ExecRows.ProtoReflect.Descriptor instead.
 func (*ExecRows) Descriptor() ([]byte, []int) {
-	return file_postInfo_proto_rawDescGZIP(), []int{9}
+	return file_postInfo_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *ExecRows) GetRows() uint64 {
@@ -550,7 +1064,7 @@ type PostInfoCountRequest struct {
 
 func (x *PostInfoCountRequest) Reset() {
 	*x = PostInfoCountRequest{}
-	mi := &file_postInfo_proto_msgTypes[10]
+	mi := &file_postInfo_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -562,7 +1076,7 @@ func (x *PostInfoCountRequest) String() string {
 func (*PostInfoCountRequest) ProtoMessage() {}
 
 func (x *PostInfoCountRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_postInfo_proto_msgTypes[10]
+	mi := &file_postInfo_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -575,7 +1089,7 @@ func (x *PostInfoCountRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PostInfoCountRequest.ProtoReflect.Descriptor instead.
 func (*PostInfoCountRequest) Descriptor() ([]byte, []int) {
-	return file_postInfo_proto_rawDescGZIP(), []int{10}
+	return file_postInfo_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *PostInfoCountRequest) GetUserId() uint64 {
@@ -594,7 +1108,7 @@ type PostInfoCountResponse struct {
 
 func (x *PostInfoCountResponse) Reset() {
 	*x = PostInfoCountResponse{}
-	mi := &file_postInfo_proto_msgTypes[11]
+	mi := &file_postInfo_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -606,7 +1120,7 @@ func (x *PostInfoCountResponse) String() string {
 func (*PostInfoCountResponse) ProtoMessage() {}
 
 func (x *PostInfoCountResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_postInfo_proto_msgTypes[11]
+	mi := &file_postInfo_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -619,7 +1133,7 @@ func (x *PostInfoCountResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PostInfoCountResponse.ProtoReflect.Descriptor instead.
 func (*PostInfoCountResponse) Descriptor() ([]byte, []int) {
-	return file_postInfo_proto_rawDescGZIP(), []int{11}
+	return file_postInfo_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *PostInfoCountResponse) GetCount() uint64 {
@@ -645,7 +1159,7 @@ type PostSearchRequest struct {
 
 func (x *PostSearchRequest) Reset() {
 	*x = PostSearchRequest{}
-	mi := &file_postInfo_proto_msgTypes[12]
+	mi := &file_postInfo_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -657,7 +1171,7 @@ func (x *PostSearchRequest) String() string {
 func (*PostSearchRequest) ProtoMessage() {}
 
 func (x *PostSearchRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_postInfo_proto_msgTypes[12]
+	mi := &file_postInfo_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -670,7 +1184,7 @@ func (x *PostSearchRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PostSearchRequest.ProtoReflect.Descriptor instead.
 func (*PostSearchRequest) Descriptor() ([]byte, []int) {
-	return file_postInfo_proto_rawDescGZIP(), []int{12}
+	return file_postInfo_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *PostSearchRequest) GetKeyword() string {
@@ -726,7 +1240,37 @@ var File_postInfo_proto protoreflect.FileDescriptor
 
 const file_postInfo_proto_rawDesc = "" +
 	"\n" +
-	"\x0epostInfo.proto\x12\x02pb\x1a\x12commentsInfo.proto\"\xc0\x01\n" +
+	"\x0epostInfo.proto\x12\x02pb\"\xc6\x01\n" +
+	"\x10CommentsInfoBase\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x18\n" +
+	"\acontent\x18\x02 \x01(\tR\acontent\x12\x16\n" +
+	"\x06userId\x18\x03 \x01(\x04R\x06userId\x12\x16\n" +
+	"\x06postId\x18\x04 \x01(\x04R\x06postId\x12\x1c\n" +
+	"\tcreatedAt\x18\x05 \x01(\x04R\tcreatedAt\x12\x1c\n" +
+	"\tupdatedAt\x18\x06 \x01(\x04R\tupdatedAt\x12\x1c\n" +
+	"\tdeletedAt\x18\a \x01(\x04R\tdeletedAt\"T\n" +
+	"\x10CommentsInfoList\x12@\n" +
+	"\x10commentsInfoList\x18\x01 \x03(\v2\x14.pb.CommentsInfoBaseR\x10commentsInfoList\" \n" +
+	"\x0eCommentsInfoId\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id\"'\n" +
+	"\rCommentPostId\x12\x16\n" +
+	"\x06postId\x18\x01 \x01(\x04R\x06postId\"$\n" +
+	"\n" +
+	"UserInfoId\x12\x16\n" +
+	"\x06userId\x18\x01 \x01(\x04R\x06userId\"\x9e\x01\n" +
+	"\x14CommentsInfoListPage\x12@\n" +
+	"\x10commentsInfoList\x18\x01 \x03(\v2\x14.pb.CommentsInfoBaseR\x10commentsInfoList\x12\x14\n" +
+	"\x05total\x18\x02 \x01(\x04R\x05total\x12\x12\n" +
+	"\x04page\x18\x03 \x01(\x04R\x04page\x12\x1a\n" +
+	"\bpageSize\x18\x04 \x01(\x04R\bpageSize\"N\n" +
+	"\x12CommentsInfoDetail\x128\n" +
+	"\fcommentsInfo\x18\x01 \x01(\v2\x14.pb.CommentsInfoBaseR\fcommentsInfo\"U\n" +
+	"\x19CommentsInfoCreateRequest\x128\n" +
+	"\fcommentsInfo\x18\x01 \x01(\v2\x14.pb.CommentsInfoBaseR\fcommentsInfo\"+\n" +
+	"\x19CommentsInfoDeleteRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id\"6\n" +
+	"\x1aCommentsInfoDeleteResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"\xc0\x01\n" +
 	"\fPostInfoBase\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12\x18\n" +
@@ -769,7 +1313,7 @@ const file_postInfo_proto_rawDesc = "" +
 	"\bpageSize\x18\x04 \x01(\x04R\bpageSize\x12\x1c\n" +
 	"\tstartDate\x18\x05 \x01(\x04R\tstartDate\x12\x18\n" +
 	"\aendDate\x18\x06 \x01(\x04R\aendDate\x12\x16\n" +
-	"\x06status\x18\a \x01(\tR\x06status2\xac\x02\n" +
+	"\x06status\x18\a \x01(\tR\x06status2\xcc\x04\n" +
 	"\bPostInfo\x12>\n" +
 	"\x0fGetPostListPage\x12\x15.pb.PostSearchRequest\x1a\x14.pb.PostInfoListPage\x12?\n" +
 	"\rGetPostDetail\x12\x0e.pb.PostInfoId\x1a\x1e.pb.PostInfoDetailWithComments\x127\n" +
@@ -778,8 +1322,7 @@ const file_postInfo_proto_rawDesc = "" +
 	"\n" +
 	"DeletePost\x12\x0e.pb.PostInfoId\x1a\x1a.pb.PostInfoDeleteResponse\x12,\n" +
 	"\n" +
-	"UpdatePost\x12\x10.pb.PostInfoBase\x1a\f.pb.execRows2\xae\x02\n" +
-	"\fCommentsInfo\x12F\n" +
+	"UpdatePost\x12\x10.pb.PostInfoBase\x1a\f.pb.execRows\x12F\n" +
 	"\x17GetCommentsInfoListPage\x12\x11.pb.CommentPostId\x1a\x18.pb.CommentsInfoListPage\x12C\n" +
 	"\x15GetCommentsInfoDetail\x12\x12.pb.CommentsInfoId\x1a\x16.pb.CommentsInfoDetail\x12G\n" +
 	"\x12CreateCommentsInfo\x12\x1d.pb.CommentsInfoCreateRequest\x1a\x12.pb.CommentsInfoId\x12H\n" +
@@ -797,59 +1340,67 @@ func file_postInfo_proto_rawDescGZIP() []byte {
 	return file_postInfo_proto_rawDescData
 }
 
-var file_postInfo_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
+var file_postInfo_proto_msgTypes = make([]protoimpl.MessageInfo, 23)
 var file_postInfo_proto_goTypes = []any{
-	(*PostInfoBase)(nil),               // 0: pb.PostInfoBase
-	(*PostInfoList)(nil),               // 1: pb.PostInfoList
-	(*PostInfoListPage)(nil),           // 2: pb.PostInfoListPage
-	(*PostInfoId)(nil),                 // 3: pb.PostInfoId
-	(*PostInfoDetail)(nil),             // 4: pb.PostInfoDetail
-	(*PostInfoDetailWithComments)(nil), // 5: pb.PostInfoDetailWithComments
-	(*PostInfoCreateRequest)(nil),      // 6: pb.PostInfoCreateRequest
-	(*PostInfoUpdateRequest)(nil),      // 7: pb.PostInfoUpdateRequest
-	(*PostInfoDeleteResponse)(nil),     // 8: pb.PostInfoDeleteResponse
-	(*ExecRows)(nil),                   // 9: pb.execRows
-	(*PostInfoCountRequest)(nil),       // 10: pb.PostInfoCountRequest
-	(*PostInfoCountResponse)(nil),      // 11: pb.PostInfoCountResponse
-	(*PostSearchRequest)(nil),          // 12: pb.PostSearchRequest
-	(*CommentsInfoListPage)(nil),       // 13: pb.CommentsInfoListPage
-	(*CommentPostId)(nil),              // 14: pb.CommentPostId
-	(*CommentsInfoId)(nil),             // 15: pb.CommentsInfoId
-	(*CommentsInfoCreateRequest)(nil),  // 16: pb.CommentsInfoCreateRequest
-	(*CommentsInfoDetail)(nil),         // 17: pb.CommentsInfoDetail
-	(*CommentsInfoDeleteResponse)(nil), // 18: pb.CommentsInfoDeleteResponse
+	(*CommentsInfoBase)(nil),           // 0: pb.CommentsInfoBase
+	(*CommentsInfoList)(nil),           // 1: pb.CommentsInfoList
+	(*CommentsInfoId)(nil),             // 2: pb.CommentsInfoId
+	(*CommentPostId)(nil),              // 3: pb.CommentPostId
+	(*UserInfoId)(nil),                 // 4: pb.UserInfoId
+	(*CommentsInfoListPage)(nil),       // 5: pb.CommentsInfoListPage
+	(*CommentsInfoDetail)(nil),         // 6: pb.CommentsInfoDetail
+	(*CommentsInfoCreateRequest)(nil),  // 7: pb.CommentsInfoCreateRequest
+	(*CommentsInfoDeleteRequest)(nil),  // 8: pb.CommentsInfoDeleteRequest
+	(*CommentsInfoDeleteResponse)(nil), // 9: pb.CommentsInfoDeleteResponse
+	(*PostInfoBase)(nil),               // 10: pb.PostInfoBase
+	(*PostInfoList)(nil),               // 11: pb.PostInfoList
+	(*PostInfoListPage)(nil),           // 12: pb.PostInfoListPage
+	(*PostInfoId)(nil),                 // 13: pb.PostInfoId
+	(*PostInfoDetail)(nil),             // 14: pb.PostInfoDetail
+	(*PostInfoDetailWithComments)(nil), // 15: pb.PostInfoDetailWithComments
+	(*PostInfoCreateRequest)(nil),      // 16: pb.PostInfoCreateRequest
+	(*PostInfoUpdateRequest)(nil),      // 17: pb.PostInfoUpdateRequest
+	(*PostInfoDeleteResponse)(nil),     // 18: pb.PostInfoDeleteResponse
+	(*ExecRows)(nil),                   // 19: pb.execRows
+	(*PostInfoCountRequest)(nil),       // 20: pb.PostInfoCountRequest
+	(*PostInfoCountResponse)(nil),      // 21: pb.PostInfoCountResponse
+	(*PostSearchRequest)(nil),          // 22: pb.PostSearchRequest
 }
 var file_postInfo_proto_depIdxs = []int32{
-	0,  // 0: pb.PostInfoList.postInfoList:type_name -> pb.PostInfoBase
-	0,  // 1: pb.PostInfoListPage.postInfoList:type_name -> pb.PostInfoBase
-	0,  // 2: pb.PostInfoDetail.postInfo:type_name -> pb.PostInfoBase
-	0,  // 3: pb.PostInfoDetailWithComments.postInfo:type_name -> pb.PostInfoBase
-	13, // 4: pb.PostInfoDetailWithComments.commentsInfoList:type_name -> pb.CommentsInfoListPage
-	0,  // 5: pb.PostInfoCreateRequest.postInfo:type_name -> pb.PostInfoBase
-	0,  // 6: pb.PostInfoUpdateRequest.postInfo:type_name -> pb.PostInfoBase
-	12, // 7: pb.PostInfo.GetPostListPage:input_type -> pb.PostSearchRequest
-	3,  // 8: pb.PostInfo.GetPostDetail:input_type -> pb.PostInfoId
-	6,  // 9: pb.PostInfo.CreatePost:input_type -> pb.PostInfoCreateRequest
-	3,  // 10: pb.PostInfo.DeletePost:input_type -> pb.PostInfoId
-	0,  // 11: pb.PostInfo.UpdatePost:input_type -> pb.PostInfoBase
-	14, // 12: pb.CommentsInfo.GetCommentsInfoListPage:input_type -> pb.CommentPostId
-	15, // 13: pb.CommentsInfo.GetCommentsInfoDetail:input_type -> pb.CommentsInfoId
-	16, // 14: pb.CommentsInfo.CreateCommentsInfo:input_type -> pb.CommentsInfoCreateRequest
-	15, // 15: pb.CommentsInfo.DeleteCommentsInfo:input_type -> pb.CommentsInfoId
-	2,  // 16: pb.PostInfo.GetPostListPage:output_type -> pb.PostInfoListPage
-	5,  // 17: pb.PostInfo.GetPostDetail:output_type -> pb.PostInfoDetailWithComments
-	3,  // 18: pb.PostInfo.CreatePost:output_type -> pb.PostInfoId
-	8,  // 19: pb.PostInfo.DeletePost:output_type -> pb.PostInfoDeleteResponse
-	9,  // 20: pb.PostInfo.UpdatePost:output_type -> pb.execRows
-	13, // 21: pb.CommentsInfo.GetCommentsInfoListPage:output_type -> pb.CommentsInfoListPage
-	17, // 22: pb.CommentsInfo.GetCommentsInfoDetail:output_type -> pb.CommentsInfoDetail
-	15, // 23: pb.CommentsInfo.CreateCommentsInfo:output_type -> pb.CommentsInfoId
-	18, // 24: pb.CommentsInfo.DeleteCommentsInfo:output_type -> pb.CommentsInfoDeleteResponse
-	16, // [16:25] is the sub-list for method output_type
-	7,  // [7:16] is the sub-list for method input_type
-	7,  // [7:7] is the sub-list for extension type_name
-	7,  // [7:7] is the sub-list for extension extendee
-	0,  // [0:7] is the sub-list for field type_name
+	0,  // 0: pb.CommentsInfoList.commentsInfoList:type_name -> pb.CommentsInfoBase
+	0,  // 1: pb.CommentsInfoListPage.commentsInfoList:type_name -> pb.CommentsInfoBase
+	0,  // 2: pb.CommentsInfoDetail.commentsInfo:type_name -> pb.CommentsInfoBase
+	0,  // 3: pb.CommentsInfoCreateRequest.commentsInfo:type_name -> pb.CommentsInfoBase
+	10, // 4: pb.PostInfoList.postInfoList:type_name -> pb.PostInfoBase
+	10, // 5: pb.PostInfoListPage.postInfoList:type_name -> pb.PostInfoBase
+	10, // 6: pb.PostInfoDetail.postInfo:type_name -> pb.PostInfoBase
+	10, // 7: pb.PostInfoDetailWithComments.postInfo:type_name -> pb.PostInfoBase
+	5,  // 8: pb.PostInfoDetailWithComments.commentsInfoList:type_name -> pb.CommentsInfoListPage
+	10, // 9: pb.PostInfoCreateRequest.postInfo:type_name -> pb.PostInfoBase
+	10, // 10: pb.PostInfoUpdateRequest.postInfo:type_name -> pb.PostInfoBase
+	22, // 11: pb.PostInfo.GetPostListPage:input_type -> pb.PostSearchRequest
+	13, // 12: pb.PostInfo.GetPostDetail:input_type -> pb.PostInfoId
+	16, // 13: pb.PostInfo.CreatePost:input_type -> pb.PostInfoCreateRequest
+	13, // 14: pb.PostInfo.DeletePost:input_type -> pb.PostInfoId
+	10, // 15: pb.PostInfo.UpdatePost:input_type -> pb.PostInfoBase
+	3,  // 16: pb.PostInfo.GetCommentsInfoListPage:input_type -> pb.CommentPostId
+	2,  // 17: pb.PostInfo.GetCommentsInfoDetail:input_type -> pb.CommentsInfoId
+	7,  // 18: pb.PostInfo.CreateCommentsInfo:input_type -> pb.CommentsInfoCreateRequest
+	2,  // 19: pb.PostInfo.DeleteCommentsInfo:input_type -> pb.CommentsInfoId
+	12, // 20: pb.PostInfo.GetPostListPage:output_type -> pb.PostInfoListPage
+	15, // 21: pb.PostInfo.GetPostDetail:output_type -> pb.PostInfoDetailWithComments
+	13, // 22: pb.PostInfo.CreatePost:output_type -> pb.PostInfoId
+	18, // 23: pb.PostInfo.DeletePost:output_type -> pb.PostInfoDeleteResponse
+	19, // 24: pb.PostInfo.UpdatePost:output_type -> pb.execRows
+	5,  // 25: pb.PostInfo.GetCommentsInfoListPage:output_type -> pb.CommentsInfoListPage
+	6,  // 26: pb.PostInfo.GetCommentsInfoDetail:output_type -> pb.CommentsInfoDetail
+	2,  // 27: pb.PostInfo.CreateCommentsInfo:output_type -> pb.CommentsInfoId
+	9,  // 28: pb.PostInfo.DeleteCommentsInfo:output_type -> pb.CommentsInfoDeleteResponse
+	20, // [20:29] is the sub-list for method output_type
+	11, // [11:20] is the sub-list for method input_type
+	11, // [11:11] is the sub-list for extension type_name
+	11, // [11:11] is the sub-list for extension extendee
+	0,  // [0:11] is the sub-list for field type_name
 }
 
 func init() { file_postInfo_proto_init() }
@@ -857,16 +1408,15 @@ func file_postInfo_proto_init() {
 	if File_postInfo_proto != nil {
 		return
 	}
-	file_commentsInfo_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_postInfo_proto_rawDesc), len(file_postInfo_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   13,
+			NumMessages:   23,
 			NumExtensions: 0,
-			NumServices:   2,
+			NumServices:   1,
 		},
 		GoTypes:           file_postInfo_proto_goTypes,
 		DependencyIndexes: file_postInfo_proto_depIdxs,

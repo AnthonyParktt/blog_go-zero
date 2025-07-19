@@ -2,6 +2,8 @@ package comments
 
 import (
 	"context"
+	"github.com/spf13/cast"
+	"go-zero_less/postcenter/cmd/rpc/pb"
 
 	"go-zero_less/postcenter/cmd/api/internal/svc"
 	"go-zero_less/postcenter/cmd/api/internal/types"
@@ -24,7 +26,21 @@ func NewCreateCommentLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Cre
 }
 
 func (l *CreateCommentLogic) CreateComment(req *types.CreateCommentReq) (resp *types.CreateCommentResp, err error) {
-	// todo: add your logic here and delete this line
+	userId := l.ctx.Value("userId")
+	userIdInt := cast.ToUint64(userId)
+	var comments = &pb.CommentsInfoCreateRequest{
+		CommentsInfo: &pb.CommentsInfoBase{
+			PostId:  req.PostId,
+			UserId:  userIdInt,
+			Content: req.Content,
+		},
+	}
+	commentId, err := l.svcCtx.PostRpcClient.CreateCommentsInfo(l.ctx, comments)
+	if err != nil {
+		return nil, err
+	}
 
-	return
+	return &types.CreateCommentResp{
+		Id: commentId.Id,
+	}, nil
 }

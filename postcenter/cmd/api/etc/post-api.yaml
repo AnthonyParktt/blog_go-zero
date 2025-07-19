@@ -9,3 +9,7 @@ PostRpcClient:
     - 127.0.0.1:2379
     Key: postinfo.rpc
     Timeout: 5000 
+
+Auth:
+  AccessSecret: ParkYD123
+  AccessExpire: 9600

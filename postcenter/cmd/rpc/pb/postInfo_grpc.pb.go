@@ -19,11 +19,15 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	PostInfo_GetPostListPage_FullMethodName = "/pb.PostInfo/GetPostListPage"
-	PostInfo_GetPostDetail_FullMethodName   = "/pb.PostInfo/GetPostDetail"
-	PostInfo_CreatePost_FullMethodName      = "/pb.PostInfo/CreatePost"
-	PostInfo_DeletePost_FullMethodName      = "/pb.PostInfo/DeletePost"
-	PostInfo_UpdatePost_FullMethodName      = "/pb.PostInfo/UpdatePost"
+	PostInfo_GetPostListPage_FullMethodName         = "/pb.PostInfo/GetPostListPage"
+	PostInfo_GetPostDetail_FullMethodName           = "/pb.PostInfo/GetPostDetail"
+	PostInfo_CreatePost_FullMethodName              = "/pb.PostInfo/CreatePost"
+	PostInfo_DeletePost_FullMethodName              = "/pb.PostInfo/DeletePost"
+	PostInfo_UpdatePost_FullMethodName              = "/pb.PostInfo/UpdatePost"
+	PostInfo_GetCommentsInfoListPage_FullMethodName = "/pb.PostInfo/GetCommentsInfoListPage"
+	PostInfo_GetCommentsInfoDetail_FullMethodName   = "/pb.PostInfo/GetCommentsInfoDetail"
+	PostInfo_CreateCommentsInfo_FullMethodName      = "/pb.PostInfo/CreateCommentsInfo"
+	PostInfo_DeleteCommentsInfo_FullMethodName      = "/pb.PostInfo/DeleteCommentsInfo"
 )
 
 // PostInfoClient is the client API for PostInfo service.
@@ -35,6 +39,10 @@ type PostInfoClient interface {
 	CreatePost(ctx context.Context, in *PostInfoCreateRequest, opts ...grpc.CallOption) (*PostInfoId, error)
 	DeletePost(ctx context.Context, in *PostInfoId, opts ...grpc.CallOption) (*PostInfoDeleteResponse, error)
 	UpdatePost(ctx context.Context, in *PostInfoBase, opts ...grpc.CallOption) (*ExecRows, error)
+	GetCommentsInfoListPage(ctx context.Context, in *CommentPostId, opts ...grpc.CallOption) (*CommentsInfoListPage, error)
+	GetCommentsInfoDetail(ctx context.Context, in *CommentsInfoId, opts ...grpc.CallOption) (*CommentsInfoDetail, error)
+	CreateCommentsInfo(ctx context.Context, in *CommentsInfoCreateRequest, opts ...grpc.CallOption) (*CommentsInfoId, error)
+	DeleteCommentsInfo(ctx context.Context, in *CommentsInfoId, opts ...grpc.CallOption) (*CommentsInfoDeleteResponse, error)
 }
 
 type postInfoClient struct {
@@ -95,6 +103,46 @@ func (c *postInfoClient) UpdatePost(ctx context.Context, in *PostInfoBase, opts 
 	return out, nil
 }
 
+func (c *postInfoClient) GetCommentsInfoListPage(ctx context.Context, in *CommentPostId, opts ...grpc.CallOption) (*CommentsInfoListPage, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CommentsInfoListPage)
+	err := c.cc.Invoke(ctx, PostInfo_GetCommentsInfoListPage_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *postInfoClient) GetCommentsInfoDetail(ctx context.Context, in *CommentsInfoId, opts ...grpc.CallOption) (*CommentsInfoDetail, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CommentsInfoDetail)
+	err := c.cc.Invoke(ctx, PostInfo_GetCommentsInfoDetail_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *postInfoClient) CreateCommentsInfo(ctx context.Context, in *CommentsInfoCreateRequest, opts ...grpc.CallOption) (*CommentsInfoId, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CommentsInfoId)
+	err := c.cc.Invoke(ctx, PostInfo_CreateCommentsInfo_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *postInfoClient) DeleteCommentsInfo(ctx context.Context, in *CommentsInfoId, opts ...grpc.CallOption) (*CommentsInfoDeleteResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CommentsInfoDeleteResponse)
+	err := c.cc.Invoke(ctx, PostInfo_DeleteCommentsInfo_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // PostInfoServer is the server API for PostInfo service.
 // All implementations must embed UnimplementedPostInfoServer
 // for forward compatibility.
@@ -104,6 +152,10 @@ type PostInfoServer interface {
 	CreatePost(context.Context, *PostInfoCreateRequest) (*PostInfoId, error)
 	DeletePost(context.Context, *PostInfoId) (*PostInfoDeleteResponse, error)
 	UpdatePost(context.Context, *PostInfoBase) (*ExecRows, error)
+	GetCommentsInfoListPage(context.Context, *CommentPostId) (*CommentsInfoListPage, error)
+	GetCommentsInfoDetail(context.Context, *CommentsInfoId) (*CommentsInfoDetail, error)
+	CreateCommentsInfo(context.Context, *CommentsInfoCreateRequest) (*CommentsInfoId, error)
+	DeleteCommentsInfo(context.Context, *CommentsInfoId) (*CommentsInfoDeleteResponse, error)
 	mustEmbedUnimplementedPostInfoServer()
 }
 
@@ -128,6 +180,18 @@ func (UnimplementedPostInfoServer) DeletePost(context.Context, *PostInfoId) (*Po
 }
 func (UnimplementedPostInfoServer) UpdatePost(context.Context, *PostInfoBase) (*ExecRows, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdatePost not implemented")
+}
+func (UnimplementedPostInfoServer) GetCommentsInfoListPage(context.Context, *CommentPostId) (*CommentsInfoListPage, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCommentsInfoListPage not implemented")
+}
+func (UnimplementedPostInfoServer) GetCommentsInfoDetail(context.Context, *CommentsInfoId) (*CommentsInfoDetail, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCommentsInfoDetail not implemented")
+}
+func (UnimplementedPostInfoServer) CreateCommentsInfo(context.Context, *CommentsInfoCreateRequest) (*CommentsInfoId, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateCommentsInfo not implemented")
+}
+func (UnimplementedPostInfoServer) DeleteCommentsInfo(context.Context, *CommentsInfoId) (*CommentsInfoDeleteResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteCommentsInfo not implemented")
 }
 func (UnimplementedPostInfoServer) mustEmbedUnimplementedPostInfoServer() {}
 func (UnimplementedPostInfoServer) testEmbeddedByValue()                  {}
@@ -240,6 +304,78 @@ func _PostInfo_UpdatePost_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
+func _PostInfo_GetCommentsInfoListPage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CommentPostId)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PostInfoServer).GetCommentsInfoListPage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: PostInfo_GetCommentsInfoListPage_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PostInfoServer).GetCommentsInfoListPage(ctx, req.(*CommentPostId))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _PostInfo_GetCommentsInfoDetail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CommentsInfoId)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PostInfoServer).GetCommentsInfoDetail(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: PostInfo_GetCommentsInfoDetail_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PostInfoServer).GetCommentsInfoDetail(ctx, req.(*CommentsInfoId))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _PostInfo_CreateCommentsInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CommentsInfoCreateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PostInfoServer).CreateCommentsInfo(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: PostInfo_CreateCommentsInfo_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PostInfoServer).CreateCommentsInfo(ctx, req.(*CommentsInfoCreateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _PostInfo_DeleteCommentsInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CommentsInfoId)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PostInfoServer).DeleteCommentsInfo(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: PostInfo_DeleteCommentsInfo_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PostInfoServer).DeleteCommentsInfo(ctx, req.(*CommentsInfoId))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // PostInfo_ServiceDesc is the grpc.ServiceDesc for PostInfo service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -267,221 +403,21 @@ var PostInfo_ServiceDesc = grpc.ServiceDesc{
 			MethodName: "UpdatePost",
 			Handler:    _PostInfo_UpdatePost_Handler,
 		},
-	},
-	Streams:  []grpc.StreamDesc{},
-	Metadata: "postInfo.proto",
-}
-
-const (
-	CommentsInfo_GetCommentsInfoListPage_FullMethodName = "/pb.CommentsInfo/GetCommentsInfoListPage"
-	CommentsInfo_GetCommentsInfoDetail_FullMethodName   = "/pb.CommentsInfo/GetCommentsInfoDetail"
-	CommentsInfo_CreateCommentsInfo_FullMethodName      = "/pb.CommentsInfo/CreateCommentsInfo"
-	CommentsInfo_DeleteCommentsInfo_FullMethodName      = "/pb.CommentsInfo/DeleteCommentsInfo"
-)
-
-// CommentsInfoClient is the client API for CommentsInfo service.
-//
-// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type CommentsInfoClient interface {
-	GetCommentsInfoListPage(ctx context.Context, in *CommentPostId, opts ...grpc.CallOption) (*CommentsInfoListPage, error)
-	GetCommentsInfoDetail(ctx context.Context, in *CommentsInfoId, opts ...grpc.CallOption) (*CommentsInfoDetail, error)
-	CreateCommentsInfo(ctx context.Context, in *CommentsInfoCreateRequest, opts ...grpc.CallOption) (*CommentsInfoId, error)
-	DeleteCommentsInfo(ctx context.Context, in *CommentsInfoId, opts ...grpc.CallOption) (*CommentsInfoDeleteResponse, error)
-}
-
-type commentsInfoClient struct {
-	cc grpc.ClientConnInterface
-}
-
-func NewCommentsInfoClient(cc grpc.ClientConnInterface) CommentsInfoClient {
-	return &commentsInfoClient{cc}
-}
-
-func (c *commentsInfoClient) GetCommentsInfoListPage(ctx context.Context, in *CommentPostId, opts ...grpc.CallOption) (*CommentsInfoListPage, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CommentsInfoListPage)
-	err := c.cc.Invoke(ctx, CommentsInfo_GetCommentsInfoListPage_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *commentsInfoClient) GetCommentsInfoDetail(ctx context.Context, in *CommentsInfoId, opts ...grpc.CallOption) (*CommentsInfoDetail, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CommentsInfoDetail)
-	err := c.cc.Invoke(ctx, CommentsInfo_GetCommentsInfoDetail_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *commentsInfoClient) CreateCommentsInfo(ctx context.Context, in *CommentsInfoCreateRequest, opts ...grpc.CallOption) (*CommentsInfoId, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CommentsInfoId)
-	err := c.cc.Invoke(ctx, CommentsInfo_CreateCommentsInfo_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *commentsInfoClient) DeleteCommentsInfo(ctx context.Context, in *CommentsInfoId, opts ...grpc.CallOption) (*CommentsInfoDeleteResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CommentsInfoDeleteResponse)
-	err := c.cc.Invoke(ctx, CommentsInfo_DeleteCommentsInfo_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-// CommentsInfoServer is the server API for CommentsInfo service.
-// All implementations must embed UnimplementedCommentsInfoServer
-// for forward compatibility.
-type CommentsInfoServer interface {
-	GetCommentsInfoListPage(context.Context, *CommentPostId) (*CommentsInfoListPage, error)
-	GetCommentsInfoDetail(context.Context, *CommentsInfoId) (*CommentsInfoDetail, error)
-	CreateCommentsInfo(context.Context, *CommentsInfoCreateRequest) (*CommentsInfoId, error)
-	DeleteCommentsInfo(context.Context, *CommentsInfoId) (*CommentsInfoDeleteResponse, error)
-	mustEmbedUnimplementedCommentsInfoServer()
-}
-
-// UnimplementedCommentsInfoServer must be embedded to have
-// forward compatible implementations.
-//
-// NOTE: this should be embedded by value instead of pointer to avoid a nil
-// pointer dereference when methods are called.
-type UnimplementedCommentsInfoServer struct{}
-
-func (UnimplementedCommentsInfoServer) GetCommentsInfoListPage(context.Context, *CommentPostId) (*CommentsInfoListPage, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetCommentsInfoListPage not implemented")
-}
-func (UnimplementedCommentsInfoServer) GetCommentsInfoDetail(context.Context, *CommentsInfoId) (*CommentsInfoDetail, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetCommentsInfoDetail not implemented")
-}
-func (UnimplementedCommentsInfoServer) CreateCommentsInfo(context.Context, *CommentsInfoCreateRequest) (*CommentsInfoId, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateCommentsInfo not implemented")
-}
-func (UnimplementedCommentsInfoServer) DeleteCommentsInfo(context.Context, *CommentsInfoId) (*CommentsInfoDeleteResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteCommentsInfo not implemented")
-}
-func (UnimplementedCommentsInfoServer) mustEmbedUnimplementedCommentsInfoServer() {}
-func (UnimplementedCommentsInfoServer) testEmbeddedByValue()                      {}
-
-// UnsafeCommentsInfoServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to CommentsInfoServer will
-// result in compilation errors.
-type UnsafeCommentsInfoServer interface {
-	mustEmbedUnimplementedCommentsInfoServer()
-}
-
-func RegisterCommentsInfoServer(s grpc.ServiceRegistrar, srv CommentsInfoServer) {
-	// If the following call pancis, it indicates UnimplementedCommentsInfoServer was
-	// embedded by pointer and is nil.  This will cause panics if an
-	// unimplemented method is ever invoked, so we test this at initialization
-	// time to prevent it from happening at runtime later due to I/O.
-	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
-		t.testEmbeddedByValue()
-	}
-	s.RegisterService(&CommentsInfo_ServiceDesc, srv)
-}
-
-func _CommentsInfo_GetCommentsInfoListPage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CommentPostId)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(CommentsInfoServer).GetCommentsInfoListPage(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: CommentsInfo_GetCommentsInfoListPage_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CommentsInfoServer).GetCommentsInfoListPage(ctx, req.(*CommentPostId))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _CommentsInfo_GetCommentsInfoDetail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CommentsInfoId)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(CommentsInfoServer).GetCommentsInfoDetail(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: CommentsInfo_GetCommentsInfoDetail_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CommentsInfoServer).GetCommentsInfoDetail(ctx, req.(*CommentsInfoId))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _CommentsInfo_CreateCommentsInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CommentsInfoCreateRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(CommentsInfoServer).CreateCommentsInfo(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: CommentsInfo_CreateCommentsInfo_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CommentsInfoServer).CreateCommentsInfo(ctx, req.(*CommentsInfoCreateRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _CommentsInfo_DeleteCommentsInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CommentsInfoId)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(CommentsInfoServer).DeleteCommentsInfo(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: CommentsInfo_DeleteCommentsInfo_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CommentsInfoServer).DeleteCommentsInfo(ctx, req.(*CommentsInfoId))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-// CommentsInfo_ServiceDesc is the grpc.ServiceDesc for CommentsInfo service.
-// It's only intended for direct use with grpc.RegisterService,
-// and not to be introspected or modified (even as a copy)
-var CommentsInfo_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "pb.CommentsInfo",
-	HandlerType: (*CommentsInfoServer)(nil),
-	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "GetCommentsInfoListPage",
-			Handler:    _CommentsInfo_GetCommentsInfoListPage_Handler,
+			Handler:    _PostInfo_GetCommentsInfoListPage_Handler,
 		},
 		{
 			MethodName: "GetCommentsInfoDetail",
-			Handler:    _CommentsInfo_GetCommentsInfoDetail_Handler,
+			Handler:    _PostInfo_GetCommentsInfoDetail_Handler,
 		},
 		{
 			MethodName: "CreateCommentsInfo",
-			Handler:    _CommentsInfo_CreateCommentsInfo_Handler,
+			Handler:    _PostInfo_CreateCommentsInfo_Handler,
 		},
 		{
 			MethodName: "DeleteCommentsInfo",
-			Handler:    _CommentsInfo_DeleteCommentsInfo_Handler,
+			Handler:    _PostInfo_DeleteCommentsInfo_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
