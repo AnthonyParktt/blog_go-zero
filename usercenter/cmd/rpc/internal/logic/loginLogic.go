@@ -30,12 +30,12 @@ func NewLoginLogic(ctx context.Context, svcCtx *svc.ServiceContext) *LoginLogic 
 }
 
 func (l *LoginLogic) Login(in *pb.LoginReq) (*pb.LoginResp, error) {
-	user, err := l.svcCtx.UserModel.FindOneByUname(l.ctx, in.Username)
+	user, err := l.svcCtx.UserModel.FindUserByName(l.ctx, in.Username)
 	if err != nil && !errors.Is(err, sqlx.ErrNotFound) {
 		return nil, err
 	}
 	if user == nil {
-		return nil, errors.New("user not found")
+		return nil, status.Error(codes.Unauthenticated, "用户名密码错误")
 	}
 	// 密码校验
 	err = bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(in.Password))

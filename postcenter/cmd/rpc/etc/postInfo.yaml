@@ -1,0 +1,16 @@
+Name: postinfo.rpc
+ListenOn: 0.0.0.0:8080
+Etcd:
+  Hosts:
+  - 127.0.0.1:2379
+  Key: postinfo.rpc
+
+UsercenterRpcClient:
+  Etcd:
+    Hosts:
+    - 127.0.0.1:2379
+    Key: usercenter.rpc
+  NonBlock:
+    true
+DB:
+  DataSource: root:123456@tcp(127.0.0.1:3307)/gorm_test?charset=utf8mb4&parseTime=True&loc=Local

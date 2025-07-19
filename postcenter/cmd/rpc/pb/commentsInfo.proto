@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+option go_package = "./pb";
+package pb;
+
+message CommentsInfoBase{
+    uint64 id = 1;
+    string content = 2;
+    uint64 userId = 3;
+    uint64 postId = 4;
+    uint64 createdAt = 5;
+    uint64 updatedAt = 6;
+    uint64 deletedAt = 7;
+}
+
+message CommentsInfoList{
+    repeated CommentsInfoBase commentsInfoList = 1;
+}
+
+message CommentsInfoId{
+    uint64 id = 1;
+}
+
+message CommentPostId{
+    uint64 postId = 1;
+}
+
+message UserInfoId{
+    uint64 userId = 1;
+}
+
+message CommentsInfoListPage{
+    repeated CommentsInfoBase commentsInfoList = 1;
+    uint64 total = 2;
+    uint64 page = 3;
+    uint64 pageSize = 4;
+}
+
+message CommentsInfoDetail{
+    CommentsInfoBase commentsInfo = 1;
+}
+
+message CommentsInfoCreateRequest{
+    CommentsInfoBase commentsInfo = 1;
+}
+
+message CommentsInfoDeleteRequest{
+    uint64 id = 1;
+}
+
+message CommentsInfoDeleteResponse{
+    bool success = 1;
+}

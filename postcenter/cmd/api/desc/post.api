@@ -1,0 +1,135 @@
+syntax = "v1"
+
+type (
+	CreatePostReq {
+		Title   string `json:"title"`
+		Content string `json:"content"`
+	}
+	CreatePostResp {
+		Id uint64 `json:"id"`
+	}
+)
+
+type (
+	CreateCommentReq {
+		PostId  uint64 `json:"postId"`
+		UserId  uint64 `json:"userId"`
+		Content string `json:"content"`
+	}
+	CreateCommentResp {
+		Id uint64 `json:"id"`
+	}
+)
+
+type (
+	PostList {
+		Id        uint64 `json:"id"`
+		Title     string `json:"title"`
+		UserId    uint64 `json:"userId"`
+		CreatedAt string `json:"createdAt"`
+	}
+	CommentsList {
+		Id        uint64 `json:"id"`
+		PostId    uint64 `json:"postId"`
+		UserId    uint64 `json:"userId"`
+		Content   string `json:"content"`
+		CreatedAt string `json:"createdAt"`
+	}
+	GetCommentsResp {
+		Comments []CommentsList `json:"comments"`
+	}
+	PostDetail {
+		Id        uint64         `json:"id"`
+		Title     string         `json:"title"`
+		Content   string         `json:"content"`
+		UserId    uint64         `json:"userId"`
+		CreatedAt string         `json:"createdAt"`
+		Comments  []CommentsList `json:"comments"`
+	}
+	GetPostReq {
+		Id uint64 `json:"id"`
+	}
+	GetPostResp {
+		Post PostDetail `json:"post"`
+	}
+	GetPostsReq {
+		KeyWord  string `json:"keyWord"`
+		UserId   uint64 `json:"userId"`
+		Page     int    `json:"page"`
+		PageSize int    `json:"pageSize"`
+	}
+	GetPostsResp {
+		Posts []PostList `json:"posts"`
+		Total int        `json:"total"`
+	}
+)
+
+type (
+	UpdatePostReq {
+		Id      uint64 `json:"id"`
+		Title   string `json:"title"`
+		Content string `json:"content"`
+	}
+	UpdatePostResp {
+		res bool `json:"res"`
+	}
+)
+
+type (
+	DeletePostReq {
+		Id uint64 `json:"id"`
+	}
+	DeletePostResp {
+		res bool `json:"res"`
+	}
+)
+
+//需认证接口
+@server (
+	prefix: /v1
+	group:  post
+	jwt:    Auth
+)
+service post-api {
+	@handler CreatePost
+	put /post (CreatePostReq) returns (CreatePostResp)
+
+	@handler UpdatePost
+	post /post (CreatePostReq) returns (CreatePostResp)
+
+	@handler DeletePost
+	delete /post/:id (DeletePostReq) returns (DeletePostResp)
+}
+
+//无需认证接口
+@server (
+	prefix: /v1
+	group:  post
+)
+service post-api {
+	@handler GetPost
+	get /post/:id (GetPostReq) returns (GetPostResp)
+
+	@handler GetPosts
+	get /posts (GetPostsReq) returns (GetPostsResp)
+}
+
+@server (
+	prefix: /v1
+	group:  comments
+)
+service post-api {
+	@handler GetComments
+	get /post/comments/:id (GetPostReq) returns (GetCommentsResp)
+}
+
+@server (
+	prefix: /v1
+	group:  comments
+	jwt:    Auth
+)
+service post-api {
+	@handler CreateComment
+	put /post/comment (CreateCommentReq) returns (CreateCommentResp)
+}
+

@@ -32,3 +32,18 @@ func (s *UsercenterServer) Register(ctx context.Context, in *pb.RegisterReq) (*p
 	l := logic.NewRegisterLogic(ctx, s.svcCtx)
 	return l.Register(in)
 }
+
+func (s *UsercenterServer) GetUsers(ctx context.Context, in *pb.UserInfosReq) (*pb.UserInfosResp, error) {
+	l := logic.NewGetUsersLogic(ctx, s.svcCtx)
+	return l.GetUsers(in)
+}
+
+func (s *UsercenterServer) GetUser(ctx context.Context, in *pb.UserInfoOneReq) (*pb.UserInfoResp, error) {
+	l := logic.NewGetUserLogic(ctx, s.svcCtx)
+	return l.GetUser(in)
+}
+
+func (s *UsercenterServer) UserPostNumIncr(ctx context.Context, in *pb.UserPostNumReq) (*pb.ResultBool, error) {
+	l := logic.NewUserPostNumIncrLogic(ctx, s.svcCtx)
+	return l.UserPostNumIncr(in)
+}

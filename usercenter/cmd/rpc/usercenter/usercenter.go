@@ -14,14 +14,23 @@ import (
 )
 
 type (
-	LoginReq     = pb.LoginReq
-	LoginResp    = pb.LoginResp
-	RegisterReq  = pb.RegisterReq
-	RegisterResp = pb.RegisterResp
+	LoginReq       = pb.LoginReq
+	LoginResp      = pb.LoginResp
+	RegisterReq    = pb.RegisterReq
+	RegisterResp   = pb.RegisterResp
+	ResultBool     = pb.ResultBool
+	UserInfoOneReq = pb.UserInfoOneReq
+	UserInfoResp   = pb.UserInfoResp
+	UserInfosReq   = pb.UserInfosReq
+	UserInfosResp  = pb.UserInfosResp
+	UserPostNumReq = pb.UserPostNumReq
 
 	Usercenter interface {
 		Login(ctx context.Context, in *LoginReq, opts ...grpc.CallOption) (*LoginResp, error)
 		Register(ctx context.Context, in *RegisterReq, opts ...grpc.CallOption) (*RegisterResp, error)
+		GetUsers(ctx context.Context, in *UserInfosReq, opts ...grpc.CallOption) (*UserInfosResp, error)
+		GetUser(ctx context.Context, in *UserInfoOneReq, opts ...grpc.CallOption) (*UserInfoResp, error)
+		UserPostNumIncr(ctx context.Context, in *UserPostNumReq, opts ...grpc.CallOption) (*ResultBool, error)
 	}
 
 	defaultUsercenter struct {
@@ -43,4 +52,19 @@ func (m *defaultUsercenter) Login(ctx context.Context, in *LoginReq, opts ...grp
 func (m *defaultUsercenter) Register(ctx context.Context, in *RegisterReq, opts ...grpc.CallOption) (*RegisterResp, error) {
 	client := pb.NewUsercenterClient(m.cli.Conn())
 	return client.Register(ctx, in, opts...)
+}
+
+func (m *defaultUsercenter) GetUsers(ctx context.Context, in *UserInfosReq, opts ...grpc.CallOption) (*UserInfosResp, error) {
+	client := pb.NewUsercenterClient(m.cli.Conn())
+	return client.GetUsers(ctx, in, opts...)
+}
+
+func (m *defaultUsercenter) GetUser(ctx context.Context, in *UserInfoOneReq, opts ...grpc.CallOption) (*UserInfoResp, error) {
+	client := pb.NewUsercenterClient(m.cli.Conn())
+	return client.GetUser(ctx, in, opts...)
+}
+
+func (m *defaultUsercenter) UserPostNumIncr(ctx context.Context, in *UserPostNumReq, opts ...grpc.CallOption) (*ResultBool, error) {
+	client := pb.NewUsercenterClient(m.cli.Conn())
+	return client.UserPostNumIncr(ctx, in, opts...)
 }

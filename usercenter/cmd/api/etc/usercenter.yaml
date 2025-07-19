@@ -2,5 +2,11 @@ Name: usercenter
 Host: 0.0.0.0
 Port: 8888
 
+UserRpc:
+  Etcd:
+    Hosts:
+    - 127.0.0.1:2379
+    Key: usercenter.rpc
+    Timeout: 5000  # 增加超时时间（毫秒）
 DB:
   DataSource: root:123456@tcp(127.0.0.1:3307)/gorm_test?charset=utf8mb4&parseTime=True&loc=Local

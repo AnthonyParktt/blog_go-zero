@@ -3,6 +3,28 @@ syntax = "proto3";
 option go_package = "./pb";
 package pb;
 
+import "userInfo.proto";
+
+message userInfosResp{
+    repeated pb.UserInfo userInfos = 1;
+}
+
+message userInfoOneReq{
+    uint64 id = 1;
+    string username = 2;
+}
+message userInfoResp{
+    pb.UserInfo userInfo = 1;
+}
+
+message userInfosReq{
+    uint64 id = 1;
+    string username = 2;
+    string email = 3;
+    string status = 4;
+    uint64 createdAt = 5;
+}
+
 message loginReq{
     string username = 1;
     string password = 2;
@@ -25,8 +47,19 @@ message RegisterResp{
     uint64 id = 1;
 }
 
+message UserPostNumReq{
+    int64 postNum = 1;
+    uint64 id = 2;
+}
+
+message ResultBool{
+    bool result = 1;
+}
 
 service usercenter{
     rpc Login(loginReq) returns (loginResp);
     rpc Register(RegisterReq) returns (RegisterResp);
+    rpc getUsers(userInfosReq) returns (userInfosResp);
+    rpc getUser(userInfoOneReq) returns (userInfoResp);
+    rpc userPostNumIncr(UserPostNumReq) returns (ResultBool);
 }
